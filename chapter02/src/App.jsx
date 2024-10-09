@@ -37,6 +37,7 @@ const Header = memo(function Header() {
 });
 
 const Main = memo(function Main() {
+    const {isDarkMode} = useContext(DarkModeContext);
     const style = {
         color: isDarkMode ? "white" : "black",
         backgroundColor: isDarkMode ? "black" : "white",
@@ -44,26 +45,26 @@ const Main = memo(function Main() {
         minHeight: "100vh",
         boxSizing: "border-box",
     };
-    const {isDarkMode} = useContext(DarkModeContext);
+
     return (
         <main style={style}>
-            <Header />
+            <Header/>
             <h1>Welcome to our business site!</h1>
         </main>
     );
 });
 
 function App() {
-    const [isDarkMode,setDarkMode] = useState(false);
-    const toggleDarkMode = ()=>{
+    const [isDarkMode, setDarkMode] = useState(false);
+    const toggleDarkMode = () => {
         setDarkMode(v => !v);
     };
     const contextValue = {isDarkMode, toggleDarkMode};
 
     return (
-        <DarkModeContext.Provide value={contextValue}>
-            <Main />
-        </DarkModeContext.Provide>
+        <DarkModeContext.Provider value={contextValue}>
+            <Main/>
+        </DarkModeContext.Provider>
     )
 }
 
