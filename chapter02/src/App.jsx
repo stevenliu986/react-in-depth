@@ -34,7 +34,7 @@ const Header = memo(function Header() {
             <Button>Pricing</Button>
             <ToggleButton/>
         </header>)
-})
+});
 
 const Main = memo(function Main() {
     const style = {
@@ -43,16 +43,27 @@ const Main = memo(function Main() {
         margin: "-8px",
         minHeight: "100vh",
         boxSizing: "border-box",
-    }
-})
+    };
+    const {isDarkMode} = useContext(DarkModeContext);
+    return (
+        <main style={style}>
+            <Header />
+            <h1>Welcome to our business site!</h1>
+        </main>
+    );
+});
 
 function App() {
-    const [count, setCount] = useState(0)
+    const [isDarkMode,setDarkMode] = useState(false);
+    const toggleDarkMode = ()=>{
+        setDarkMode(v => !v);
+    };
+    const contextValue = {isDarkMode, toggleDarkMode};
 
     return (
-        <>
-
-        </>
+        <DarkModeContext.Provide value={contextValue}>
+            <Main />
+        </DarkModeContext.Provide>
     )
 }
 
