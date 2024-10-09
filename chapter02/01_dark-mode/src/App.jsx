@@ -1,10 +1,9 @@
 import {createContext, memo, useContext, useState} from 'react'
 
-const useDarkMode = () => createContext({});
-const DarkModeContext = useDarkMode();
+const DarkModeContext = createContext({});
 
 function Button({children, ...rest}) {
-    const {isDarkMode} = useContext(DarkModeContext);
+    const {isDarkMode} = useDarkMode();
     const style = {
         backgroundColor: isDarkMode ? "#333" : "#CCC",
         border: "1px solid",
@@ -14,7 +13,7 @@ function Button({children, ...rest}) {
 }
 
 function ToggleButton() {
-    const {toggleDarkMode} = useContext(DarkModeContext);
+    const {toggleDarkMode} = useDarkMode();
     return (<Button onClick={toggleDarkMode}>Toggle mode</Button>);
 }
 
@@ -65,6 +64,8 @@ function DarkModeProvider({children}) {
         </DarkModeContext.Provider>
     )
 }
+
+const useDarkMode = () => useContext(DarkModeContext);
 
 function App() {
     return (
