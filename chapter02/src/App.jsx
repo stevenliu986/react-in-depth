@@ -1,6 +1,7 @@
 import {createContext, memo, useContext, useState} from 'react'
 
-const DarkModeContext = createContext({});
+const useDarkMode = () => createContext({});
+const DarkModeContext = useDarkMode();
 
 function Button({children, ...rest}) {
     const {isDarkMode} = useContext(DarkModeContext);
@@ -36,7 +37,7 @@ const Header = memo(function Header() {
         </header>)
 });
 
-const Main = memo(function Main() {
+function Main() {
     const {isDarkMode} = useContext(DarkModeContext);
     const style = {
         color: isDarkMode ? "white" : "black",
@@ -52,17 +53,24 @@ const Main = memo(function Main() {
             <h1>Welcome to our business site!</h1>
         </main>
     );
-});
+}
 
-function App() {
+function DarkModeProvider({children}) {
     const [isDarkMode, setDarkMode] = useState(false);
     const toggleDarkMode = () => setDarkMode(v => !v);
     const contextValue = {isDarkMode, toggleDarkMode};
-
     return (
         <DarkModeContext.Provider value={contextValue}>
-            <Main/>
+            {children}
         </DarkModeContext.Provider>
+    )
+}
+
+function App() {
+    return (
+        <DarkModeProvider>
+            <Main/>
+        </DarkModeProvider>
     )
 }
 
