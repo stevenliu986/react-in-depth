@@ -13,7 +13,7 @@ function Button({children, ...rest}) {
 }
 
 function ToggleButton() {
-    const toggleDarkMode = useContext(DarkModeContext);
+    const {toggleDarkMode} = useContext(DarkModeContext);
     return (<Button onClick={toggleDarkMode}>Toggle mode</Button>);
 }
 
