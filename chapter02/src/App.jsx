@@ -56,9 +56,7 @@ const Main = memo(function Main() {
 
 function App() {
     const [isDarkMode, setDarkMode] = useState(false);
-    const toggleDarkMode = () => {
-        setDarkMode(v => !v);
-    };
+    const toggleDarkMode = () => setDarkMode(v => !v);
     const contextValue = {isDarkMode, toggleDarkMode};
 
     return (
