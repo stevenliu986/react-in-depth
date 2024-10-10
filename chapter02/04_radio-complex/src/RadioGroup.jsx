@@ -15,10 +15,15 @@ export default function RadioGroup({name, options, onChange}) {
             flexDirection: "column",
             alignItems: "flex-start",
         }}>
-            {options.map(option => (
-                <label key={option}>
-                    <input type="radio" name={name} value={option} checked={selectedValue === option}
-                           onChange={handleChange}/>{option}
+            {options.map((option, index) => (
+                <label key={index} style={option.isPopular ? { border: "1px dashed red" } : null}>
+                    {option.icon && <span>{option.icon} </span>}
+                    <input type="radio" name={name} value={option.value} checked={selectedValue === option.value}
+                           onChange={handleChange}/>
+                    {option.label}
+                    {/* {option.postfix && <em> {option.postfix}</em>} */}
+                    {selectedValue === option.value && option.details}
+                    {option.isPopular ? <strong>🔥 Popular!</strong> : null}
                 </label>
             ))}
         </div>
