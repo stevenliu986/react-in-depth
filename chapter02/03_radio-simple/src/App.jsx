@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import RadioGroup from "./RadioGroup.jsx";
+import RadioGroup from "../../04_radio-complex/src/RadioGroup.jsx";
 
 function App() {
     const [data, setData] = useState({
