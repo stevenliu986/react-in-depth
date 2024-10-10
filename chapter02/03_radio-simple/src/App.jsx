@@ -19,6 +19,22 @@ function App() {
                 "Medium: $7.99",
                 "Large: $9.99",
             ]} onChange={onChange("meal")}/>
+            <h2>Bread</h2>
+            <RadioGroup name="bread" options={[
+                "Bagel",
+                "Roll",
+                "Croissant",
+            ]} onChange={onChange("bread")}/>
+            <h2>Side</h2>
+            <RadioGroup name="side" options={[
+                "Avocado",
+                "Bacon",
+            ]} onChange={onChange("side")}/>
+            <h2>Beverage</h2>
+            <RadioGroup name="beverage" options={[
+                "Orange Juice",
+                "Coffee",
+            ]} onChange={onChange("beverage")}/>
         </main>
     )
 }
