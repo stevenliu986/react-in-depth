@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { RadioGroupContext } from "./contexts";
-import { Option } from "./Option";
-import { Details } from "./Details";
+import {useState} from "react";
+import {RadioGroupContext} from "./contexts";
+import {Option} from "./Option";
+import {Details} from "./Details";
 
-export function RadioGroup({ children, name, onChange }) {
+export function RadioGroup({children, name, onChange}) {
     const [selectedValue, setSelectedValue] = useState("");
 
     const handleChange = (value) => {
