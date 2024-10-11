@@ -1,4 +1,4 @@
-import { LongTaskManager } from "./LongTaskManager.jsx"; // import {CompactTaskManager} from "./CompactTaskManager.jsx";
+import { LongTaskManager } from "./LongTaskManager.jsx";
 // import {CompactTaskManager} from "./CompactTaskManager.jsx";
 
 export default function App() {
