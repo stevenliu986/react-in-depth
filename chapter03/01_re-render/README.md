@@ -1,8 +1,2 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## React组件重新渲染的例外情况
+#### 通常情况下，组件会根据自身的state或传入的props的变化来进行重新渲染。但有个例外情况，如果state或props是由useRef这个函数创建的ref对象，那么使用了这个ref对象的组件就不会重新渲染
