@@ -1,20 +1,7 @@
-import { useState, memo } from "react";
-
-const Items = memo(function Items({ items }) {
-  return (
-    <>
-      <h2>Todo items</h2>
-      <ul>
-        {items.map((item) => {
-          <li key={item}>{item}</li>;
-        })}
-      </ul>
-    </>
-  );
-});
+import { useMemo, useState } from "react";
 
 function Todo() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(["Clean gutter", "Do dishes"]);
   const [newItem, setNewItem] = useState("");
 
   const onSubmit = (evt) => {
@@ -23,6 +10,20 @@ function Todo() {
     evt.preventDefault();
   };
 
+  const memoItems = useMemo(
+    () => (
+      <>
+        <h2>Todo items</h2>
+        <ul>
+          {items.map((todo) => (
+            <li key={todo}>{todo}</li>
+          ))}
+        </ul>
+      </>
+    ),
+    [items],
+  );
+
   const onChange = (evt) => setNewItem(evt.target.value);
   return (
     <>
@@ -30,7 +31,7 @@ function Todo() {
         <input type="text" value={newItem} onChange={onChange} />
         <button>Add todo item</button>
       </form>
-      <Items items={items} />
+      {memoItems}
     </>
   );
 }
