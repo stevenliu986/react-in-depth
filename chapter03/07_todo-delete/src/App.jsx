@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
 const Items = memo(function Items({ items, onDelete }) {
   return (
@@ -20,7 +20,10 @@ function Todo() {
   const [items, setItems] = useState(["Wash dishes", "Clean table"]);
   const [newItem, setNewItem] = useState("");
 
-  const onDelete = (task) => setItems(items.filter((item) => item !== task));
+  const onDelete = useCallback(
+    (task) => setItems(items.filter((item) => item !== task)),
+    [items],
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
