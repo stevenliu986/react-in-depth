@@ -1,9 +1,9 @@
 ## React组件性能优化
 #### React的优化有多种方式，可以使用memo，useMemo，useCallback等函数来对组件性能进行优化。这些优化可以使组件避免不必要的重新渲染。本例是使用了useMemo。
 
-#### useMemo(calculation, dependencies)参数说明
-1. 一个没有任何参数的 calculation 函数，像这样 () =>，并且返回任何你想要的计算结果。
-2. dependencies：一个由包含在你的组件中并在 calculation 中使用的所有值组成的 依赖列表。
+#### useMemo(calculateValue, dependencies)参数说明
+1. 要缓存计算值的函数。它应该是一个没有任何参数的纯函数，并且可以返回任意类型。React 将会在首次渲染时调用该函数；在之后的渲染中，如果 dependencies 没有发生变化，React 将直接返回相同值。否则，将会再次调用 calculateValue 并返回最新结果，然后缓存该结果以便下次重复使用。
+2. dependencies：所有在 calculateValue 函数中使用的响应式变量组成的数组。响应式变量包括 props、state 和所有你直接在组件中定义的变量和函数。依赖项数组的长度必须是固定的并且必须写成 [dep1, dep2, dep3] 这种形式。
    
 #### useMemo 不会让首次渲染更快，它只会帮助你跳过不必要的更新工作。
 
