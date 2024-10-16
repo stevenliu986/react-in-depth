@@ -1,12 +1,15 @@
 import { memo, useState } from "react";
 
-const Items = memo(function Items({ items }) {
+const Items = memo(function Items({ items, onDelete }) {
   return (
     <>
       <h1>Todo Items</h1>
       <ul>
-        {items.map((item) => (
-          <li key={item}>{item}</li>
+        {items.map((task, index) => (
+          <li key={index}>
+            {task}
+            <button onClick={() => onDelete(task)}> X</button>
+          </li>
         ))}
       </ul>
     </>
@@ -16,6 +19,8 @@ const Items = memo(function Items({ items }) {
 function Todo() {
   const [items, setItems] = useState(["Wash dishes", "Clean table"]);
   const [newItem, setNewItem] = useState("");
+
+  const onDelete = (task) => setItems(items.filter((item) => item !== task));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +32,7 @@ function Todo() {
 
   return (
     <>
-      <Items items={items} />
+      <Items items={items} onDelete={onDelete} />
       <form onSubmit={handleSubmit}>
         <input type="text" value={newItem} onChange={(e) => handleChange(e)} />
         <button>Add</button>
