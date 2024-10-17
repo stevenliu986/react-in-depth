@@ -15,8 +15,11 @@ function Employee({ employeeList }) {
       <h1>Employee List</h1>
       <br />
       <label>
-        <input type="checkbox" onChange={() => setShowTemp((v) => !v)} /> Show
-        temporary employees only?
+        <input
+          type="checkbox"
+          onChange={() => setShowTemp((showTemp) => !showTemp)}
+        />{" "}
+        Show temporary employees only?
       </label>
 
       <ul>
