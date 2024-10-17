@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 
 function Employee({ employeeList }) {
   const [showTemp, setShowTemp] = useState(false);
@@ -15,8 +15,8 @@ function Employee({ employeeList }) {
       <h1>Employee List</h1>
       <br />
       <label>
-        <input type="checkbox" onChange={() => setShowTemp((v) => !v)} />
-        Show temporary employees only?
+        <input type="checkbox" onChange={() => setShowTemp((v) => !v)} /> Show
+        temporary employees only?
       </label>
 
       <ul>
