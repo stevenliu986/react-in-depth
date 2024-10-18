@@ -1,9 +1,9 @@
-import { createContext, memo, useContext, useState } from "react";
+import { useContext, useState, createContext, memo } from "react";
 
 const DarkModeContext = createContext({});
 
 function Button({ children, ...rest }) {
-  const { isDarkMode } = useDarkMode();
+  const { isDarkMode } = useContext(DarkModeContext);
   const style = {
     backgroundColor: isDarkMode ? "#333" : "#CCC",
     border: "1px solid",
@@ -17,7 +17,8 @@ function Button({ children, ...rest }) {
 }
 
 function ToggleButton() {
-  const { toggleDarkMode } = useDarkMode();
+  const { toggleDarkMode } = useContext(DarkModeContext);
+
   return <Button onClick={toggleDarkMode}>Toggle mode</Button>;
 }
 
@@ -30,7 +31,6 @@ const Header = memo(function Header() {
     gap: "5px",
     justifyContent: "flex-end",
   };
-
   return (
     <header style={style}>
       <Button>Products</Button>
@@ -41,7 +41,12 @@ const Header = memo(function Header() {
   );
 });
 
-function Main() {
+const Title = memo(function Title({ isPrimary = false, children }) {
+  const Heading = isPrimary ? "h1" : "h2";
+  return <Heading>{children}</Heading>;
+});
+
+const Main = memo(function Main() {
   const { isDarkMode } = useContext(DarkModeContext);
   const style = {
     color: isDarkMode ? "white" : "black",
@@ -50,33 +55,22 @@ function Main() {
     minHeight: "100vh",
     boxSizing: "border-box",
   };
-
   return (
     <main style={style}>
       <Header />
-      <h1>Welcome to our business site!</h1>
+      <Title isPrimary>Welcome to our business site!</Title>
     </main>
   );
-}
+});
 
-function DarkModeProvider({ children }) {
+function App() {
   const [isDarkMode, setDarkMode] = useState(false);
   const toggleDarkMode = () => setDarkMode((v) => !v);
   const contextValue = { isDarkMode, toggleDarkMode };
   return (
     <DarkModeContext.Provider value={contextValue}>
-      {children}
-    </DarkModeContext.Provider>
-  );
-}
-
-const useDarkMode = () => useContext(DarkModeContext);
-
-function App() {
-  return (
-    <DarkModeProvider>
       <Main />
-    </DarkModeProvider>
+    </DarkModeContext.Provider>
   );
 }
 
