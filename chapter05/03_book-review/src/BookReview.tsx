@@ -11,7 +11,12 @@ interface IBookReviewProps extends PickedRatingProps {
   body: string;
 }
 
-function BookReview({ title, body, reviewer, ...rest }: IBookReviewProps) {
+function BookReview({
+  title,
+  reviewer,
+  body,
+  ...rest
+}: Readonly<IBookReviewProps>) {
   return (
     <section className="review">
       <Rating max={5} {...rest} />

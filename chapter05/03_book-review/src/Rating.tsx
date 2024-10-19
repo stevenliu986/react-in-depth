@@ -34,7 +34,7 @@ export default function Rating({
   value,
   max = 5,
   label = "",
-}: IRatingProps) {
+}: Readonly<IRatingProps>) {
   const percentage = Math.round((value / max) * 100);
   return (
     <div className="rating" title={label}>
