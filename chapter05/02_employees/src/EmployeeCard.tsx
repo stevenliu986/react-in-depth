@@ -15,7 +15,7 @@ function EmployeeCard({ item }: IEmployeeCardProps) {
     <section className="employee">
       <h2 className="employee__name">{item.name}</h2>
       <h3 className="employee__title">{item.title}</h3>
-      <h3>{item.website}</h3>
+      <h3 className="employee__link">{item.website}</h3>
     </section>
   );
 }
