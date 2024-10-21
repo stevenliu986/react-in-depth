@@ -1,4 +1,5 @@
 import "./app.css";
+import AppointmentResponse from "./AppointmentResponse.tsx";
 
 function App() {
   const user = {
@@ -11,19 +12,7 @@ function App() {
 
       <p>From: {user.name}</p>
       <p>Date: {user.date}</p>
-      <div>
-        <label>
-          <input type="radio" /> Accepted
-        </label>
-        <label>
-          <input type="radio" /> Declined
-        </label>
-      </div>
-
-      <label>
-        Optional Messages:
-        <input type="text" />
-      </label>
+      <AppointmentResponse />
     </>
   );
 }
