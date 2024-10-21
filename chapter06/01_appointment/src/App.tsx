@@ -12,7 +12,7 @@ function App() {
 
       <p>From: {user.name}</p>
       <p>Date: {user.date}</p>
-      <AppointmentResponse />
+      <AppointmentResponse onSubmit={console.log} />
     </>
   );
 }
