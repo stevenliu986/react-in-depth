@@ -1,4 +1,3 @@
-import "./app.css";
 import AppointmentResponse from "./AppointmentResponse.tsx";
 
 function App() {
