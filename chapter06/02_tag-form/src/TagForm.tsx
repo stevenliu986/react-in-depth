@@ -21,8 +21,8 @@ function TagForm() {
         <button onClick={handleOnChange}>Add tag</button>
       </label>
       <ul>
-        {tags.map((tag) => (
-          <li key={tag}>{tag}</li>
+        {tags.map((tag, index) => (
+          <li key={index}>{tag}</li>
         ))}
       </ul>
     </>
