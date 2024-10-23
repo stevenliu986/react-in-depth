@@ -15,7 +15,7 @@ function reorder<T>(state: State<T>, action: Action): State<T> {
 
   switch (action.type) {
     case "moveUp": {
-      if (action.index <= 0 || action.index >= newState.length) {
+      if (action.index <= 0) {
         return state;
       }
       // Swap previous element with index
@@ -26,7 +26,7 @@ function reorder<T>(state: State<T>, action: Action): State<T> {
       return newState;
     }
     case "moveDown": {
-      if (action.index < 0 || action.index >= newState.length - 1) {
+      if (action.index >= newState.length - 1) {
         return state;
       }
       // Swap next element with index
@@ -37,7 +37,7 @@ function reorder<T>(state: State<T>, action: Action): State<T> {
       return newState;
     }
     case "moveToTop": {
-      if (action.index <= 0 || action.index >= newState.length) {
+      if (action.index <= 0) {
         return state;
       }
       // Move index to top
@@ -46,7 +46,7 @@ function reorder<T>(state: State<T>, action: Action): State<T> {
       return newState;
     }
     case "moveToBottom": {
-      if (action.index < 0 || action.index >= newState.length) {
+      if (action.index < 0) {
         return state;
       }
       // Move index to bottom
