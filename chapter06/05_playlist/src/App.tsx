@@ -1,4 +1,4 @@
-import Playlist from "./PlaylistItem.tsx";
+import Playlist from "./Playlist.tsx";
 
 const MY_COOL_PLAYLIST = [
   { id: 1, title: "Rock You Like a Hurricane", artist: "Scorpions" },
