@@ -1,21 +1,14 @@
-import { Reducer, useReducer } from "react";
+import { type Reducer, useReducer } from "react";
+import { Action } from "./types";
 
 type State<T> = T[];
-type Action =
-  | { type: "moveUp"; index: number }
-  | { type: "moveDown"; index: number }
-  | {
-      type: "moveToBottom";
-      index: number;
-    }
-  | { type: "moveToTop"; index: number };
 
 function reorder<T>(state: State<T>, action: Action): State<T> {
   const newState: T[] = [...state];
 
   switch (action.type) {
-    case "moveUp": {
-      if (action.index <= 0) {
+    case "up": {
+      if (action.index <= 0 || action.index >= newState.length) {
         return state;
       }
       // Swap previous element with index
@@ -25,8 +18,8 @@ function reorder<T>(state: State<T>, action: Action): State<T> {
       ];
       return newState;
     }
-    case "moveDown": {
-      if (action.index >= newState.length - 1) {
+    case "down": {
+      if (action.index < 0 || action.index >= newState.length - 1) {
         return state;
       }
       // Swap next element with index
@@ -36,8 +29,8 @@ function reorder<T>(state: State<T>, action: Action): State<T> {
       ];
       return newState;
     }
-    case "moveToTop": {
-      if (action.index <= 0) {
+    case "first": {
+      if (action.index <= 0 || action.index >= newState.length) {
         return state;
       }
       // Move index to top
@@ -45,8 +38,8 @@ function reorder<T>(state: State<T>, action: Action): State<T> {
       newState.unshift(itemToTop);
       return newState;
     }
-    case "moveToBottom": {
-      if (action.index < 0) {
+    case "last": {
+      if (action.index < 0 || action.index >= newState.length) {
         return state;
       }
       // Move index to bottom
@@ -60,23 +53,5 @@ function reorder<T>(state: State<T>, action: Action): State<T> {
 }
 
 export function useReorderable<T>(initial: State<T>) {
-  const [state, dispatch] = useReducer<Reducer<State<T>, Action>>(
-    reorder,
-    initial,
-  );
-  return {
-    list: state,
-    moveUp: (index: number) => {
-      dispatch({ type: "moveUp", index });
-    },
-    moveDown: (index: number) => {
-      dispatch({ type: "moveDown", index });
-    },
-    moveToBottom: (index: number) => {
-      dispatch({ type: "moveToBottom", index });
-    },
-    moveToTop: (index: number) => {
-      dispatch({ type: "moveToTop", index });
-    },
-  };
+  return useReducer<Reducer<State<T>, Action>>(reorder, initial);
 }
