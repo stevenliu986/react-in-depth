@@ -14,7 +14,12 @@ const MY_COOL_PLAYLIST = [
 ];
 
 function App() {
-  return <Playlist songs={MY_COOL_PLAYLIST} />;
+  return (
+    <main>
+      <h1>My Cool Playlist</h1>
+      <Playlist songs={MY_COOL_PLAYLIST} />
+    </main>
+  );
 }
 
 export default App;
