@@ -1,4 +1,10 @@
-const EMPLOYEES: Employee[] = [
+import { IEmployee, IEntry } from "./types.ts";
+import EmployeeCard from "./EmployeeCard.tsx";
+import HighScoreEntry from "./HighScoreEntry.tsx";
+import { Paginable } from "./Paginable.tsx";
+import "./app.css";
+
+const EMPLOYEES: IEmployee[] = [
   { name: "Harvey Specter", title: "Senior Partner" },
   { name: "Mike Ross", title: "Associate" },
   { name: "Louis Litt", title: "Partner" },
@@ -8,7 +14,7 @@ const EMPLOYEES: Employee[] = [
   { name: "Katrina Bennett", title: "Associate" },
 ];
 
-const ENTRIES: Entry[] = [
+const ENTRIES: IEntry[] = [
   { name: "Augustus Caesar", points: 2500 },
   { name: "Hammurabi", points: 2250 },
   { name: "Abraham Lincoln", points: 2000 },
@@ -27,7 +33,18 @@ const ENTRIES: Entry[] = [
 function App() {
   return (
     <main>
-      <h1>Pagination</h1>
+      <h1>Cast of characters</h1>
+      <Paginable
+        className="employee-list"
+        items={EMPLOYEES}
+        Renderer={EmployeeCard}
+      />
+      <h1>High Score</h1>
+      <Paginable
+        className="highscores"
+        items={ENTRIES}
+        Renderer={HighScoreEntry}
+      />
     </main>
   );
 }
