@@ -1,7 +1,30 @@
+import Button from "./Button.jsx";
+
 function App() {
   return (
     <>
-      <h1>Inline style</h1>
+      <fieldset>
+        <legend>Normal button</legend>
+        <Button>Send</Button>
+      </fieldset>
+      <fieldset>
+        <legend>Outline button</legend>
+        <Button outline>Send</Button>
+      </fieldset>
+      <fieldset>
+        <legend>Disabled button</legend>
+        <Button disabled>Send</Button>
+      </fieldset>
+      <fieldset>
+        <legend>Wide button</legend>
+        <Button width={400}>Send</Button>
+      </fieldset>
+      <fieldset>
+        <legend>Custom button</legend>
+        <Button style={{ backgroundColor: "purple", borderColor: "purple" }}>
+          Send
+        </Button>
+      </fieldset>
     </>
   );
 }
