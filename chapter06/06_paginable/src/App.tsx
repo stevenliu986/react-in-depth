@@ -1,5 +1,3 @@
-import Playlist from "./Playlist.tsx";
-
 const MY_COOL_PLAYLIST = [
   { id: 1, title: "Rock You Like a Hurricane", artist: "Scorpions" },
   { id: 2, title: "Paint It Black", artist: "The Rolling Stones" },
@@ -16,8 +14,7 @@ const MY_COOL_PLAYLIST = [
 function App() {
   return (
     <main>
-      <h1>My Cool Playlist</h1>
-      <Playlist songs={MY_COOL_PLAYLIST} />
+      <h1>Pagination</h1>
     </main>
   );
 }
