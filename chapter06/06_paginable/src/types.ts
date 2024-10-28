@@ -1,13 +1,9 @@
-export interface ISong {
-  id: number;
+export interface IEmployee {
   title: string;
-  artist: string;
+  name: string;
 }
 
-export type Action =
-  | { type: "up"; index: number }
-  | { type: "down"; index: number }
-  | { type: "first"; index: number }
-  | { type: "last"; index: number };
-
-export type ActionType = Action["type"];
+export interface IEntry {
+  name: string;
+  points: number;
+}
