@@ -1,14 +1,27 @@
-const MY_COOL_PLAYLIST = [
-  { id: 1, title: "Rock You Like a Hurricane", artist: "Scorpions" },
-  { id: 2, title: "Paint It Black", artist: "The Rolling Stones" },
-  { id: 3, title: "Enter Sandman", artist: "Metallica" },
-  { id: 4, title: "Thunderstruck", artist: "AC/DC" },
-  { id: 5, title: "Crazy Train", artist: "Ozzy Osbourne" },
-  { id: 6, title: "Back in Black", artist: "AC/DC" },
-  { id: 7, title: "Paranoid", artist: "Black Sabbath" },
-  { id: 8, title: "Smells Like Teen Spirit", artist: "Nirvana" },
-  { id: 9, title: "Another One Bites the Dust", artist: "Queen" },
-  { id: 10, title: "Seven Nation Army", artist: "The White Stripes" },
+const EMPLOYEES: Employee[] = [
+  { name: "Harvey Specter", title: "Senior Partner" },
+  { name: "Mike Ross", title: "Associate" },
+  { name: "Louis Litt", title: "Partner" },
+  { name: "Rachel Zane", title: "Associate" },
+  { name: "Donna Paulsen", title: "Legal Secretary" },
+  { name: "Jessica Pearson", title: "Managing Partner" },
+  { name: "Katrina Bennett", title: "Associate" },
+];
+
+const ENTRIES: Entry[] = [
+  { name: "Augustus Caesar", points: 2500 },
+  { name: "Hammurabi", points: 2250 },
+  { name: "Abraham Lincoln", points: 2000 },
+  { name: "Winston Churchill", points: 1900 },
+  { name: "Nelson Mandela", points: 1800 },
+  { name: "Catherine the Great", points: 1700 },
+  { name: "Ashoka", points: 1600 },
+  { name: "Marcus Aurelius", points: 1500 },
+  { name: "Lech Wałęsa", points: 1400 },
+  { name: "Hatsheput", points: 1300 },
+  { name: "Charles de Gaulle", points: 1200 },
+  { name: "Eleanor of Aquitane", points: 1100 },
+  { name: "Ivan the Terrible", points: 1000 },
 ];
 
 function App() {
