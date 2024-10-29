@@ -1,4 +1,5 @@
-import Button from "./Button.jsx";
+import styles from "./app.module.css";
+import Button from "./Button";
 
 function App() {
   return (
@@ -21,9 +22,7 @@ function App() {
       </fieldset>
       <fieldset>
         <legend>Custom button</legend>
-        <Button style={{ backgroundColor: "purple", borderColor: "purple" }}>
-          Send
-        </Button>
+        <Button className={styles.customButton}>Send</Button>
       </fieldset>
     </>
   );

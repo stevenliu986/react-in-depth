@@ -1,52 +1,24 @@
-const BUTTON_STYLES = {
-  display: "flex",
-  background: "hotpink",
-  color: "white",
-  border: "2px solid hotpink",
-  margin: "1em 2em",
-  padding: "1em 2em",
-  fontSize: "120%",
-  width: "250px",
-  cursor: "pointer",
-  gap: "10px",
-  justifyContent: "center",
-  alignItems: "center",
-};
-const OUTLINE_STYLES = {
-  borderColor: "hotpink",
-  backgroundColor: "transparent",
-  color: "hotpink",
-};
-const DISABLED_STYLES = {
-  opacity: 0.5,
-  pointerEvents: "none",
-};
-const ICON_STYLES = {
-  width: "16px",
-  height: "16px",
-};
+import styles from "./button.module.css";
 
 function Button({
   children,
   outline = false,
   disabled = false,
-  style = {},
+  className = "",
   width = null,
 }) {
-  const elementStyle = {
-    ...BUTTON_STYLES,
-    ...(outline && OUTLINE_STYLES),
-    ...(disabled && DISABLED_STYLES),
-    ...(width && {
-      width: `${width}px`,
-    }),
-    ...style,
-  };
+  const classNames = [
+    styles.normal,
+    outline ? styles.outline : "",
+    className,
+  ].filter(Boolean);
+  const style = width ? { width: `${width}px` } : null;
+
   return (
-    <button disabled={disabled} style={elementStyle}>
+    <button className={classNames.join(" ")} disabled={disabled} style={style}>
       {children}
       <svg
-        style={ICON_STYLES}
+        className={styles.icon}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
