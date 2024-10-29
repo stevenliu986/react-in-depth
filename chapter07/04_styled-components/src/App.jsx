@@ -1,4 +1,10 @@
-import Button from "./Button.jsx";
+import styled from "styled-components";
+import Button from "./Button";
+
+const CustomButton = styled(Button)`
+  background-color: purple;
+  border-color: purple;
+`;
 
 function App() {
   return (
@@ -21,9 +27,7 @@ function App() {
       </fieldset>
       <fieldset>
         <legend>Custom button</legend>
-        <Button style={{ backgroundColor: "purple", borderColor: "purple" }}>
-          Send
-        </Button>
+        <CustomButton>Send</CustomButton>
       </fieldset>
     </>
   );
