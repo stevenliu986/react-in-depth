@@ -28,12 +28,7 @@ export function Paginable<T>({
   return (
     <section className={className}>
       {subset.map((item, index: number) => (
-        <Renderer
-          key={index}
-          item={item}
-          Renderer={Renderer}
-          index={index + startOffset}
-        />
+        <Renderer key={index} item={item} index={index + startOffset} />
       ))}
       {numPages > 1 && (
         <ol className="pagination">
