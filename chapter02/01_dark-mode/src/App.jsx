@@ -42,7 +42,7 @@ const Header = memo(function Header() {
 });
 
 function Main() {
-  const { isDarkMode } = useContext(DarkModeContext);
+  const { isDarkMode } = useDarkMode();
   const style = {
     color: isDarkMode ? "white" : "black",
     backgroundColor: isDarkMode ? "black" : "white",
