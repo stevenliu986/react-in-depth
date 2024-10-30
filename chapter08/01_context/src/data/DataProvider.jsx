@@ -26,11 +26,13 @@ export function DataProvider({ children }) {
   const addThing = useCallback(
     (name) =>
       setThings((ts) =>
-        ts.concat({
-          id: uuid(),
-          name,
-          done: [],
-        }),
+        ts.concat([
+          {
+            id: uuid(),
+            name,
+            done: [],
+          },
+        ]),
       ),
     [],
   );
