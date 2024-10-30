@@ -1,28 +1,36 @@
 import { useState } from "react";
 import { Thing } from "./Thing.jsx";
+import { useAddThing, useAllThings } from "../data";
 
 export function AllThings() {
-  const [addThing, setAddThing] = useState(false);
-  const [thing, setThing] = useState("");
-  const [allThings, setAllThings] = useState([]);
-  const onChange = (evt) => setThing(evt.target.value);
+  const [isAddThing, setIsAddThing] = useState(false);
+  const [newThing, setNewThing] = useState("");
+  // const [allThings, setAllThings] = useState([]);
+  const allThings = useAllThings();
+  const addThing = useAddThing();
+  const onChange = (evt) => setNewThing(evt.target.value);
 
   const handleClick = () => {
-    setAllThings((allThings) => allThings.concat(thing));
-    setThing("");
+    console.log("handleClick called");
+    addThing(newThing);
+    // setAllThings((items) => items.concat(newThing));
+    setNewThing("");
+    setIsAddThing(false);
   };
+
   return (
     <>
       <h1>All Things</h1>
-      {allThings && allThings.map((item) => <Thing key={item} thing={item} />)}
-      {addThing ? (
+      {allThings &&
+        allThings.map((item) => <Thing key={item.id} thing={item.name} />)}
+      {isAddThing ? (
         <div>
-          <input type="text" value={thing} onChange={onChange} />
+          <input type="text" value={newThing} onChange={onChange} />
           <button onClick={handleClick}>Add</button>
-          <button onClick={() => setAddThing((v) => !v)}>Cancel</button>
+          <button onClick={() => setIsAddThing((v) => !v)}>Cancel</button>
         </div>
       ) : (
-        <button onClick={() => setAddThing((v) => !v)}>Add a thing</button>
+        <button onClick={() => setIsAddThing((v) => !v)}>Add a thing</button>
       )}
     </>
   );
