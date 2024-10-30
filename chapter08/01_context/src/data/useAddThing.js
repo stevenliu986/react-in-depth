@@ -1,6 +1,5 @@
-import { DataContext } from "./DataContext.js";
-import { useContext } from "react";
+import { useData } from "./useData.js";
 
 export const useAddThing = () => {
-  return useContext(DataContext).actions.addThing;
+  return useData().actions.addThing;
 };

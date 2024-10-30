@@ -1,6 +1,5 @@
-import { DataContext } from "./DataContext.js";
-import { useContext } from "react";
+import { useData } from "./useData.js";
 
 export const useAllThings = () => {
-  return useContext(DataContext).state.things;
+  return useData().state.things;
 };
