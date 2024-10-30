@@ -5,15 +5,12 @@ import { useAddThing, useAllThings } from "../data";
 export function AllThings() {
   const [isAddThing, setIsAddThing] = useState(false);
   const [newThing, setNewThing] = useState("");
-  // const [allThings, setAllThings] = useState([]);
   const allThings = useAllThings();
   const addThing = useAddThing();
   const onChange = (evt) => setNewThing(evt.target.value);
 
   const handleClick = () => {
-    console.log("handleClick called");
     addThing(newThing);
-    // setAllThings((items) => items.concat(newThing));
     setNewThing("");
     setIsAddThing(false);
   };
