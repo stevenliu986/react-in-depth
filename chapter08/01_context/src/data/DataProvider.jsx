@@ -1,5 +1,5 @@
 import { DataContext } from "./DataContext.js";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { v4 as uuid } from "uuid";
 
 const STORAGE_KEY = "100-things-context";
@@ -37,16 +37,19 @@ export function DataProvider({ children }) {
     [],
   );
 
-  const contextValue = {
-    state: {
-      things,
-      currentThing,
-      setCurrentThing,
-    },
-    actions: {
-      addThing,
-    },
-  };
+  const contextValue = useMemo(
+    () => ({
+      state: {
+        things,
+        currentThing,
+        setCurrentThing,
+      },
+      actions: {
+        addThing,
+      },
+    }),
+    [things, currentThing, addThing],
+  );
 
   return (
     <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>
