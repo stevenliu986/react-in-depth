@@ -37,18 +37,20 @@ export function DataProvider({ children }) {
     [],
   );
 
+  const seeThing = setCurrentThing;
+
   const contextValue = useMemo(
     () => ({
       state: {
         things,
         currentThing,
-        setCurrentThing,
       },
       actions: {
         addThing,
+        seeThing,
       },
     }),
-    [things, currentThing, addThing],
+    [things, currentThing, addThing, seeThing],
   );
 
   return (

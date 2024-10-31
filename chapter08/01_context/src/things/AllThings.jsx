@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { Thing } from "./Thing.jsx";
-import { useAddThing, useAllThings } from "../data";
+import { useAddThing, useAllThings, useCurrentThing, useThing } from "../data";
 
 export function AllThings() {
   const [isAddThing, setIsAddThing] = useState(false);
   const [newThing, setNewThing] = useState("");
   const allThings = useAllThings();
   const addThing = useAddThing();
+  const seeThing = useThing();
+  const currentThing = useCurrentThing();
+
   const onChange = (evt) => setNewThing(evt.target.value);
 
   const handleClick = () => {
+    seeThing("thing");
+    console.log("currentThing :: ", currentThing);
     addThing(newThing);
     setNewThing("");
     setIsAddThing(false);
