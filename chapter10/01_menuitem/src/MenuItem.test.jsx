@@ -8,6 +8,6 @@ test("Menu item renders a link in a list item", () => {
   const listItem = screen.getByRole("listitem");
   const link = getByRole(listItem, "link");
   expect(link).toHaveAttribute("href", "/blog");
-  expect(link).toHaveAttribute("label", "Blog");
+  expect(link).toHaveAttribute("title", "Blog");
   expect(link).toHaveTextContent("Blog");
 });
