@@ -1,4 +1,5 @@
 import { getByRole, render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import { expect, test } from "vitest";
 import { MenuItem } from "./MenuItem";
 
