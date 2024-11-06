@@ -4,22 +4,26 @@ import userEvent from "@testing-library/user-event";
 import { expect, test } from "vitest";
 import { Counter } from "./Counter.jsx";
 
-test("Counter should start at the given value", () => {
-  render(<Counter start={10} />);
+function setup(start) {
+  render(<Counter start={start} />);
+  const heading = screen.getByRole("heading", { name: `Counter: ${start}` });
+  const user = userEvent.setup();
 
-  const heading = screen.getByRole("heading", { name: "Counter: 10" });
+  return { heading, user };
+}
+
+test("Counter should start at the given value", () => {
+  const { heading } = setup(10);
   expect(heading).toBeInTheDocument();
 });
 
 test("Counter should start at the default value", () => {
-  render(<Counter />);
-  const heading = screen.getByRole("heading", { name: "Counter: 0" });
+  const { heading } = setup(0);
   expect(heading).toBeInTheDocument();
 });
 
 test("Counter should increment when clicking the button", async () => {
-  render(<Counter />);
-  const user = userEvent.setup();
+  const { user } = setup(0);
   const incrementButton = screen.getByRole("button", { name: "Increment" });
   await user.click(incrementButton);
   const heading = screen.getByRole("heading", { name: "Counter: 1" });
